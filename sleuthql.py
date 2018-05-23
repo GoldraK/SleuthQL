@@ -791,7 +791,7 @@ It will also create a directory with SQLMap ready request files.
     print("-"*7)
     for domain, path_dict in results.items():
         try:
-            mkdir(domain)
+            mkdir("scans/"+domain)
         except FileExistsError as e:
             pass
         print()
@@ -804,7 +804,7 @@ It will also create a directory with SQLMap ready request files.
                 print("\t\t{}".format(",".join(data['params'])))
                 counter = 0
                 for request in data['requests']:
-                    with open("{}/{}_{}_{}.txt".format(domain, method, path.replace("/","."), counter), 'w') as f:
+                    with open("{}/{}_{}_{}.txt".format("scans/"+domain, method, path.replace("/","."), counter), 'w') as f:
                         f.write(request)
                     counter += 1
 
